@@ -1,0 +1,10 @@
+git config --list
+git config --global user.name "rafagarrafinhacardoso"
+git config --global user.email "acenelio@gmail.com"
+git init
+git remote add origin https://github.com/rafagarrafinhacardoso/MeuProjeto.git
+git pull origin master
+git status
+git add .
+git commit -m "Projeto criado"
+git push -u origin master
