@@ -9,9 +9,9 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const barraMenu = [
     {"text": "Pagina Inicial", "link": "/", "id": 1},
-    {"text": "Segunda Pagina", "link": "about", "id": 2},
-    {"text": "Terceira Pagina", "link": "/", "id": 3},
-    {"text": "Fuck Pagina", "link": "/about", "id": 4}
+    {"text": "Registrar Monitor de Movimento", "link": "/regEquipamento", "id": 2},
+    {"text": "Listar Monitores de Movimento", "link": "/listEquipamentos", "id": 3},
+    {"text": "Fuck Pagina", "link": "/regEquipamento", "id": 4}
 ];
 
 export default function Header() {
@@ -36,7 +36,7 @@ export default function Header() {
     };
 
     function clickItemMenu(item) {
-        console.log(item)
+        // console.log(item)
         navigate(item.link, { replace: true });
     }
 

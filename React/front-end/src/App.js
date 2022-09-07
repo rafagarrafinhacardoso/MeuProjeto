@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
+import RegistrarMotionMonitor from './components/MotionMonitor/RegistrarMotionMonitor';
+import ListarMotionMonitor from './components/MotionMonitor/ListarMotionMonitor';
 
 function App() {
   return (
@@ -9,6 +11,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route path="regEquipamento" element={<RegistrarMotionMonitor />} />
+        <Route path="listEquipamentos" element={<ListarMotionMonitor />} />
       </Routes>
     </div>
   );
