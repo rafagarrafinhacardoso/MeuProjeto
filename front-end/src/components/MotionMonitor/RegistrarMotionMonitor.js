@@ -1,22 +1,53 @@
 import { Title } from "@mui/icons-material";
 import { Box, Button, Container, createTheme, CssBaseline, FormControl, Grid, InputLabel, MenuItem, Paper, Select, TextField, ThemeProvider, Typography } from "@mui/material";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header";
 
 const theme = createTheme();
 
+
+// ["RAQUETE_TENIS","TACO_BASEBALL","RAQUETE_BEACH_TENNIS","LUVA_BOXE","SAPATO"]
 const tiposEquipamentos = [
-    { nome: "Selecione", valor: "", id: 0 },
-    { nome: "Raquetes de Tênis", valor: "RaquetesTenis", id: 1 },
-    { nome: "Taco de Baseball", valor: "TacoBaseball", id: 2 },
-    { nome: "Raquetes Beach Tennis", valor: "RaquetesBeachTennis", id: 3 },
-    { nome: "Luva de Boxe", valor: "LuvaBoxe", id: 4 },
-    { nome: "Sapato", valor: "Sapato", id: 5 },
+
+    { valor: "", nome: "Selecione", id: 0 },
+    { valor: "RAQUETE_TENIS", nome: "Raquetes de Tênis", id: 1 },
+    { valor: "TACO_BASEBALL", nome: "Taco de Baseball", id: 2 },
+    { valor: "RAQUETE_BEACH_TENNIS", nome: "Raquetes Beach Tennis", id: 3 },
+    { valor: "LUVA_BOXE", nome: "Luva de Boxe", id: 4 },
+    { valor: "SAPATO", nome: "Sapato", id: 5 },
 ];
 
 export default function RegistrarMotionMonitor() {
+    let navigate = useNavigate();
     const [maquina, setMaquina] = useState({});
+    const [typeEquip, setTypeEquip] = useState([]);
+
+    useEffect(() => {
+        // console.log(typeEquip.length);
+        if (typeEquip.length == 0) {
+            // console.log("Buscar tipos equipamentos");
+            fetch('/equipamento/tipo')
+                .then((res) => res.json())
+                .then((data) => {
+                    // console.log(data);
+                    let resp = [];
+                    for (let x in data) {
+                        // console.log(data[x]);
+                        // resp.add(data[x])
+                        const val = data[x]
+                        let item = tiposEquipamentos.find(x => x.valor === val);
+                        // console.log(item);
+                        resp.push(item);
+                    }
+                    setTypeEquip(resp)
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
+
+    }, [])
 
     const handleChange = (event) => {
         // setMaquina(event.target.value);
@@ -28,7 +59,23 @@ export default function RegistrarMotionMonitor() {
     };
 
     const btnClickEnviar = () => {
-        console.log(maquina)
+        // console.log(maquina)
+        fetch("/equipamento", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify(maquina),
+        })
+            .then(res => res.json())
+            .then((result) => {
+                console.log("equipamentos", result)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        navigate("/listEquipamentos", { replace: true });
     }
 
     return (
@@ -80,7 +127,7 @@ export default function RegistrarMotionMonitor() {
                                                 onChange={handleChange}
                                                 name="equipType"
                                             >
-                                                {tiposEquipamentos.map((item, index) => (
+                                                {typeEquip.map((item) => (
                                                     <MenuItem
                                                         key={item.id}
                                                         value={item.valor}

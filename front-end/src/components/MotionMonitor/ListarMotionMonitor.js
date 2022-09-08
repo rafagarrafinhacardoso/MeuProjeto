@@ -1,16 +1,44 @@
-import { Box, Button, Container, createTheme, CssBaseline, Grid, Paper, ThemeProvider, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { Box, Button, Container, createTheme, CssBaseline, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, ThemeProvider, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Header";
 // import CameraIcon from '@mui/icons-material/PhotoCamera';
 
 const theme = createTheme();
 
-const btnClickEnviar = () => {
-    console.log("Buscar")
-}
+
 
 export default function ListarMotionMonitor() {
+    const [equipamentos, setEquipamentos] = useState([])
+
+    useEffect(() => {
+        // console.log(equipamentos.length);
+        if (equipamentos.length == 0) {
+            // console.log("Buscar equipamentos");
+            fetch('/equipamento')
+                .then((res) => res.json())
+                .then((data) => {
+                    // console.log(data);
+                    setEquipamentos(data)
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
+
+    }, [])
+
+    const btnClickEnviar = () => {
+        fetch('/equipamento')
+                .then((res) => res.json())
+                .then((data) => {
+                    // console.log(data);
+                    setEquipamentos(data)
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -32,6 +60,37 @@ export default function ListarMotionMonitor() {
                                     noValidate
                                     autoComplete="off"
                                 >
+                                    <div>
+                                    <TableContainer component={Paper} sx={{ m: 1, minWidth: 460 }} >
+                                        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                                            <TableHead>
+                                                <TableRow>
+                                                    <TableCell>Nome do Dispositivo</TableCell>
+                                                    <TableCell align="right"> Número de série</TableCell>
+                                                    <TableCell align="right">Tipo do Equipamento</TableCell>
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody>
+                                                {equipamentos.map((equi) => (
+                                                    <TableRow
+                                                        key={equi.id}
+                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                                    >
+                                                        <TableCell component="th" scope="row">
+                                                            {equi.nome}
+                                                        </TableCell>
+                                                        <TableCell align="right">
+                                                            {equi.serialNumber}
+                                                        </TableCell>
+                                                        <TableCell align="right">
+                                                            {equi.equipType}
+                                                        </TableCell>
+                                                    </TableRow>
+                                                ))}
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
+                                    </div>
                                     <div>
                                         <Button
                                             variant="contained"
