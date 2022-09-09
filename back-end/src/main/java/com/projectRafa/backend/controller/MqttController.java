@@ -4,6 +4,7 @@ package com.projectRafa.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,16 +26,23 @@ public class MqttController {
 			JSONObject json = new JSONObject(msg);
 			System.out.print(json.get("message") + " : ");
 			System.out.println(json.get("topic"));
-//			JsonObject convertObject = new Gson().fromJson(msg, JsonObject.class);
 			mqttGateway.senToMqtt(json.get("message").toString(), json.get("topic").toString());
 			return ResponseEntity.ok("Success");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.ok("fail");
 		}
-		
-		
 	}
 	
+	@GetMapping("/btnLed")
+	public ResponseEntity<?> clickInterruptor(){
+		try {
+			mqttGateway.senToMqtt("active", "comando/led");
+			return ResponseEntity.ok("Success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.ok("fail");
+		}
+	}
 
 }

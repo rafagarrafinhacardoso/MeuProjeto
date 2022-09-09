@@ -4,6 +4,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import RegistrarMotionMonitor from './components/MotionMonitor/RegistrarMotionMonitor';
 import ListarMotionMonitor from './components/MotionMonitor/ListarMotionMonitor';
+import BtnMqttExemple from './components/exemples/BtnMqttExemple';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="regEquipamento" element={<RegistrarMotionMonitor />} />
         <Route path="listEquipamentos" element={<ListarMotionMonitor />} />
+        <Route path="btnMqtt" element={<BtnMqttExemple />} />
       </Routes>
     </div>
   );
