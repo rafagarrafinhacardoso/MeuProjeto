@@ -1,5 +1,28 @@
 # MeuProjeto
 
-Primeira alteração no readme.
+## Front End
 
-Essa e uma segunda Alteração blablabla.
+### Start
+
+    cd front-end/
+        npm start
+
+### Instal
+
+    cd front-end/
+        npm i
+
+## Back End
+
+### Start
+
+    cd front-end/
+        mvn spring-boot:run
+
+## Mosquito Service (MQTT)
+
+### Start
+    systemctl stop mosquitto.service
+    mosquitto -c mqtt.conf -v
+
+
