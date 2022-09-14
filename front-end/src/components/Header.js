@@ -12,7 +12,7 @@ const barraMenu = [
     {"text": "Registrar Monitor de Movimento", "link": "/regEquipamento", "id": 2},
     {"text": "Listar Monitores de Movimento", "link": "/listEquipamentos", "id": 3},
     {"text": "Exemple MQTT", "link": "/btnMqtt", "id": 4},
-    {"text": "Fuck Pagina", "link": "/", "id": 4}
+    {"text": "Fuck Pagina", "link": "/", "id": 5}
 ];
 
 export default function Header() {

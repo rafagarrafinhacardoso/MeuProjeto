@@ -16,7 +16,7 @@
 
 ### Start
 
-    cd front-end/
+    cd back-end/
         mvn spring-boot:run
 
 ## Mosquito Service (MQTT)
