@@ -1,5 +1,7 @@
 package com.projectRafa.backend.model;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,6 +17,12 @@ public class Equipamento {
 	private String nome;
 	
 	private String serialNumber;
+	
+	private String status;
+	
+	private Date updatedAt;
+	
+	private Date createdAt;
 	
 	private EQUIPTYPE equipType;
 	

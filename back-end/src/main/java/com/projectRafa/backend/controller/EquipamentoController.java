@@ -1,6 +1,7 @@
 package com.projectRafa.backend.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class EquipamentoController {
 	public Equipamento novoEquipamento(@RequestBody Equipamento equip) {
 		System.out.println(equip.getNome() + " : " + equip.getSerialNumber() + " : " + equip.getEquipType());
 //		equip.setEquipType(EQUIPTYPE.LUVA_BOXE);
+		equip.setCreatedAt(new Date());
+		equip.setUpdatedAt(new Date());
 		return this.equipamentoService.criar(equip);
 	}
 
