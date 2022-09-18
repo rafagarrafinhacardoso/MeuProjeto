@@ -78,14 +78,6 @@ public class MqttBeans {
 						if(equip.isPresent()) {
 							Equipamento response = EquipamentoUtil.statusEquipamento(equip.get(),
 									message.getPayload().toString());
-							System.out.print("if: ");
-							System.out.println(response.getStatus() != null && response.getSerialNumber().equals(equips.get(i).getSerialNumber()));
-							System.out.print("response null: ");
-							System.out.println(response.getStatus() != null);
-							System.out.print("SerialNumber: ");
-							System.out.print(response.getSerialNumber() + " : ");
-							System.out.print(equips.get(i).getSerialNumber());
-							System.out.println(response.getSerialNumber().equals(equips.get(i).getSerialNumber()));
 							if (response.getStatus() != null && response.getSerialNumber().equals(equips.get(i).getSerialNumber())) {
 								System.out.println("<<<<<<< OK >>>>>>>");
 								equipamentoService.criar(response);
