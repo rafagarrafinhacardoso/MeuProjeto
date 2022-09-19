@@ -33,6 +33,19 @@ export default function ListarMotionMonitor() {
                 .then((res) => res.json())
                 .then((data) => {
                     // console.log(data);
+                    for (let x in data){
+                        const moni = data[x];
+                        if (moni.updatedAt !== moni.createdAt){
+                            var update = new Date(moni.updatedAt);
+                            if( ((new Date())- update ) < (new Date(0).setMinutes(5)) ){
+                                data[x].status = "Ativo";
+                            }else{
+                                data[x].status = "Desativo";
+                            }
+                        }else{
+                            data[x].status = "";
+                        }
+                    }
                     setEquipamentos(data)
                 })
                 .catch((error) => {
@@ -67,6 +80,7 @@ export default function ListarMotionMonitor() {
                                                 <TableRow>
                                                     <TableCell>Nome do Dispositivo</TableCell>
                                                     <TableCell align="right"> Número de série</TableCell>
+                                                    <TableCell align="right"> Status</TableCell>
                                                     <TableCell align="right">Tipo do Equipamento</TableCell>
                                                 </TableRow>
                                             </TableHead>
@@ -81,6 +95,9 @@ export default function ListarMotionMonitor() {
                                                         </TableCell>
                                                         <TableCell align="right">
                                                             {equi.serialNumber}
+                                                        </TableCell>
+                                                        <TableCell align="right">
+                                                            {equi.status || ""}
                                                         </TableCell>
                                                         <TableCell align="right">
                                                             {equi.equipType}

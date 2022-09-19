@@ -28,7 +28,7 @@ public class EquipamentoServiceImpl implements EquipamentoService {
 
 	@Override
 	public Equipamento criar(Equipamento equip) {
-		System.out.println(equip.getNome() + " : " + equip.getSerialNumber() +" : "+ equip.getEquipType());
+		// System.out.println(equip.getNome() + " : " + equip.getSerialNumber() +" : "+ equip.getEquipType());
 		return this.equipamentoRepository.save(equip);
 	}
 	
