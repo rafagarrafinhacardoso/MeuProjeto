@@ -22,13 +22,6 @@ export default function Home() {
                                 </Typography>
                             </Paper>
                         </Grid>
-                        <Grid item xs={12}>
-                            <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                                <nav>
-                                    <Link to="/about">About</Link>
-                                </nav>
-                            </Paper>
-                        </Grid>
                     </Grid>
                 </Container>
 

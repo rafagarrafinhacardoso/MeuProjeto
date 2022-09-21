@@ -31,12 +31,16 @@ import com.projectRafa.backend.model.Equipamento;
 import com.projectRafa.backend.model.MotionAnalysis;
 import com.projectRafa.backend.model.MotionAnalysis.EixosCartesiano;
 import com.projectRafa.backend.service.EquipamentoService;
+import com.projectRafa.backend.service.MotionAnalysisService;
 
 @Configuration
 public class MqttBeans {
 
 	@Autowired
 	private EquipamentoService equipamentoService;
+	
+	@Autowired
+	private MotionAnalysisService motionAnalysisService;
 
 	public MqttPahoClientFactory mqttClientFactory() {
 		DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
@@ -103,21 +107,24 @@ public class MqttBeans {
 						MotionAnalysis anali = new MotionAnalysis();
 						anali.setSerialNumber(analiresp.get("serialNumber").toString());
 						if(analiresp.get("serialNumber").toString().equals(equips.get(i).getSerialNumber())) {
-							Map<String, List<Integer>> accel = (Map<String, List<Integer>>) analiresp
+							Map<String, List<Float>> accel = (Map<String, List<Float>>) analiresp
 									.get("acceleration");
-							EixosCartesiano eixo = new EixosCartesiano();
-							eixo.setX(accel.get("x"));
-							eixo.setY(accel.get("y"));
-							eixo.setZ(accel.get("z"));
-							anali.setAcceleration(eixo);
-							accel = (Map<String, List<Integer>>) analiresp.get("gyro");
-							eixo.setX(accel.get("x"));
-							eixo.setY(accel.get("y"));
-							eixo.setZ(accel.get("z"));
-							anali.setGyro(eixo);
-
+							EixosCartesiano eixoA = new EixosCartesiano();
+							eixoA.setX(accel.get("x"));
+							eixoA.setY(accel.get("y"));
+							eixoA.setZ(accel.get("z"));
+							anali.setAcceleration(eixoA);
+							EixosCartesiano eixoG = new EixosCartesiano();
+							Map<String, List<Float>> gyro = (Map<String, List<Float>>) analiresp.get("gyro");
+							eixoG.setX(gyro.get("x"));
+							eixoG.setY(gyro.get("y"));
+							eixoG.setZ(gyro.get("z"));
+							anali.setGyro(eixoG);
+							anali.setCreatedAt(new Date());
+							anali.setUpdatedAt(new Date());
 							System.out.print("anali");
 							System.out.println(anali);
+							motionAnalysisService.salvar(anali);
 						}
 						
 					}

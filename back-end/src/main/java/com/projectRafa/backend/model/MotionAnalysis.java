@@ -27,9 +27,9 @@ public class MotionAnalysis {
 
 	@Data
 	public static class EixosCartesiano {
-		private List<Integer> x;
-		private List<Integer> y;
-		private List<Integer> z;
+		private List<Float> x;
+		private List<Float> y;
+		private List<Float> z;
 	}
 
 }

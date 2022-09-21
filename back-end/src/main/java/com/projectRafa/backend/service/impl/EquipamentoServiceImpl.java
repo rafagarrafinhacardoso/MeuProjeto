@@ -12,7 +12,7 @@ import com.projectRafa.backend.service.EquipamentoService;
 
 @Service
 public class EquipamentoServiceImpl implements EquipamentoService {
-	
+
 	@Autowired
 	private EquipamentoRepository equipamentoRepository;
 
@@ -20,7 +20,7 @@ public class EquipamentoServiceImpl implements EquipamentoService {
 	public List<Equipamento> obterTodos() {
 		return this.equipamentoRepository.findAll();
 	}
-	
+
 	@Override
 	public List<Equipamento> findAllSerialNumber() {
 		return this.equipamentoRepository.findAllIdSerialNumber();
@@ -28,10 +28,9 @@ public class EquipamentoServiceImpl implements EquipamentoService {
 
 	@Override
 	public Equipamento criar(Equipamento equip) {
-		// System.out.println(equip.getNome() + " : " + equip.getSerialNumber() +" : "+ equip.getEquipType());
 		return this.equipamentoRepository.save(equip);
 	}
-	
+
 	@Override
 	public Optional<Equipamento> findById(String id) {
 		return this.equipamentoRepository.findById(id);

@@ -5,6 +5,7 @@ import Home from './components/Home';
 import RegistrarMotionMonitor from './components/MotionMonitor/RegistrarMotionMonitor';
 import ListarMotionMonitor from './components/MotionMonitor/ListarMotionMonitor';
 import BtnMqttExemple from './components/exemples/BtnMqttExemple';
+import MainAnalysis from './components/analysis/MainAnalysis';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="regEquipamento" element={<RegistrarMotionMonitor />} />
         <Route path="listEquipamentos" element={<ListarMotionMonitor />} />
         <Route path="btnMqtt" element={<BtnMqttExemple />} />
+        <Route path="mainAnalysis" element={<MainAnalysis />} />
       </Routes>
     </div>
   );
