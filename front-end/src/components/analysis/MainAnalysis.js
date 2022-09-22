@@ -66,8 +66,11 @@ export default function MainAnalysis() {
                                 </Typography>
                             </Paper>
                         </Grid>
-                        </Grid>
-                        {/* <Grid item xs={12}> */}
+                        {/* </Grid> */}
+                        <Grid item xs={6}>
+                            <Typography component="h1" variant="h4" align="center">
+                                Aceleração
+                            </Typography>
                             <ResponsiveContainer width="100%" height={400}>
                                 <LineChart
                                     width={500}
@@ -75,8 +78,8 @@ export default function MainAnalysis() {
                                     data={dataAnalysis[3]}
                                     margin={{
                                         top: 10,
-                                        right: 5,
-                                        left: -25,
+                                        right: 1,
+                                        left: 1,
                                         bottom: 1,
                                     }}>
                                     {/* <CartesianGrid strokeDasharray="3 3" /> */}
@@ -89,6 +92,11 @@ export default function MainAnalysis() {
                                     <Line legendType={"square"} dot={false} type="natural" name={"Z"} dataKey="accele_Z" stroke="#82ff9d" />
                                 </LineChart>
                             </ResponsiveContainer>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography component="h1" variant="h4" align="center">
+                                Aceleração
+                            </Typography>
                             <ResponsiveContainer width="100%" height={400}>
                                 <LineChart
                                     width={500}
@@ -96,8 +104,8 @@ export default function MainAnalysis() {
                                     data={dataAnalysis[0]}
                                     margin={{
                                         top: 10,
-                                        right: 5,
-                                        left: -25,
+                                        right: 1,
+                                        left: 1,
                                         bottom: 1,
                                     }}>
                                     {/* <CartesianGrid strokeDasharray="3 3" /> */}
@@ -110,8 +118,8 @@ export default function MainAnalysis() {
                                     <Line legendType={"square"} dot={false} type="natural" name={"Z"} dataKey="accele_Z" stroke="#82ff9d" />
                                 </LineChart>
                             </ResponsiveContainer>
-                        {/* </Grid> */}
-                    {/* </Grid> */}
+                        </Grid>
+                    </Grid>
                 </Container>
 
             </Box>
