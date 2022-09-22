@@ -1,81 +1,53 @@
 // https://react-chartjs-2.js.org/examples/line-chart
 import { Box, Container, createTheme, CssBaseline, Grid, Paper, ThemeProvider, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Header from "../Header";
-import { Line } from 'react-chartjs-2';
+// import { Line } from 'react-chartjs-2';
 // import faker from 'faker';
 // import { StyleSheet, View } from "react-native";
 
 const theme = createTheme();
 
-const options = {
-    responsive: true,
-    interaction: {
-        mode: "index",
-        intersect: false
-    },
-    stacked: false,
-    plugins: {
-        title: {
-            display: true,
-            text: "Chart.js Line Chart - Multi Axis"
-        }
-    },
-    scales: {
-        y: {
-            type: "linear",
-            display: true,
-            position: "left"
-        },
-        y1: {
-            type: "linear",
-            display: true,
-            position: "right",
-            grid: {
-                drawOnChartArea: false
-            }
-        }
-    }
-};
-
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-const data = {
-    labels,
-    datasets: [
-        {
-            label: "Dataset 1",
-            data: [3, 1, 5, 8, 9, 3, 5],
-            borderColor: "rgb(255, 99, 132)",
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
-            yAxisID: "y"
-        },
-        {
-            label: "Dataset 2",
-            data: [5, 9, 5, 2, 6, 2, 6],
-            borderColor: "rgb(53, 162, 235)",
-            backgroundColor: "rgba(53, 162, 235, 0.5)",
-            yAxisID: "y1"
-        }
-    ]
-};
 
 export default function MainAnalysis() {
+    const [dataAnalysis, setDataAnalysis] = useState([]);
+
 
     useEffect(() => {
         // console.log(equipamentos.length);
-        // if (equipamentos.length == 0) {
-        // console.log("Buscar equipamentos");
-        fetch('/analysis')
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                // setEquipamentos(data)
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-        // }
+        if (dataAnalysis.length == 0) {
+            // console.log("Buscar equipamentos");
+            fetch('/analysis')
+                .then((res) => res.json())
+                .then((data) => {
+                    let resp = [];
+                    for (let i in data) {
+                        const ma = data[i];
+                        let aux = [];
+                        for (let c in ma.acceleration.x) {
+                            // console.log(c);
+                            aux.push({
+                                eixoX: c,
+                                accele_X: ma.acceleration.x[c],
+                                accele_Y: ma.acceleration.y[c],
+                                accele_Z: ma.acceleration.z[c],
+                                gyro_x: ma.gyro.x[c],
+                                gyro_y: ma.gyro.y[c],
+                                gyro_z: ma.gyro.z[c],
+                            });
+                        }
+                        resp.push(aux)
+
+                    }
+                    setDataAnalysis(resp)
+                    console.log(data, resp);
+                    // setEquipamentos(data)
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
 
     }, [])
 
@@ -90,17 +62,56 @@ export default function MainAnalysis() {
                         <Grid item xs={12}>
                             <Paper sx={{ p: 3, display: 'flex', flexDirection: 'column' }}>
                                 <Typography component="h1" variant="h4" align="center">
-                                    graficos graficos e mais graficos
+                                    graficos graficos e mais graficos  asda
                                 </Typography>
                             </Paper>
                         </Grid>
-                        <Grid item xs={12}>
-                            <div>
-                                {/* <Line data={data} options={options} /> */}
-                            </div>
-
                         </Grid>
-                    </Grid>
+                        {/* <Grid item xs={12}> */}
+                            <ResponsiveContainer width="100%" height={400}>
+                                <LineChart
+                                    width={500}
+                                    height={300}
+                                    data={dataAnalysis[3]}
+                                    margin={{
+                                        top: 10,
+                                        right: 5,
+                                        left: -25,
+                                        bottom: 1,
+                                    }}>
+                                    {/* <CartesianGrid strokeDasharray="3 3" /> */}
+                                    <XAxis dataKey="eixoX" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Line legendType={"square"} dot={false} type="natural" name={"X"} dataKey="accele_X" stroke="#8884d8" />
+                                    <Line legendType={"square"} dot={false} type="natural" name={"Y"} dataKey="accele_Y" stroke="#82ca9d" />
+                                    <Line legendType={"square"} dot={false} type="natural" name={"Z"} dataKey="accele_Z" stroke="#82ff9d" />
+                                </LineChart>
+                            </ResponsiveContainer>
+                            <ResponsiveContainer width="100%" height={400}>
+                                <LineChart
+                                    width={500}
+                                    height={300}
+                                    data={dataAnalysis[0]}
+                                    margin={{
+                                        top: 10,
+                                        right: 5,
+                                        left: -25,
+                                        bottom: 1,
+                                    }}>
+                                    {/* <CartesianGrid strokeDasharray="3 3" /> */}
+                                    <XAxis dataKey="eixoX" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Line legendType={"square"} dot={false} type="natural" name={"X"} dataKey="accele_X" stroke="#8884d8" />
+                                    <Line legendType={"square"} dot={false} type="natural" name={"Y"} dataKey="accele_Y" stroke="#82ca9d" />
+                                    <Line legendType={"square"} dot={false} type="natural" name={"Z"} dataKey="accele_Z" stroke="#82ff9d" />
+                                </LineChart>
+                            </ResponsiveContainer>
+                        {/* </Grid> */}
+                    {/* </Grid> */}
                 </Container>
 
             </Box>
