@@ -16,6 +16,10 @@ public class MotionAnalysis {
 	private String id;
 
 	private String serialNumber;
+	
+	private String userName;
+	
+	private String analysName;
 
 	private EixosCartesiano acceleration;
 
