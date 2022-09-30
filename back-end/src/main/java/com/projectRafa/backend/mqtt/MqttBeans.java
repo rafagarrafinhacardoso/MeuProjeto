@@ -122,8 +122,8 @@ public class MqttBeans {
 							anali.setGyro(eixoG);
 							anali.setCreatedAt(new Date());
 							anali.setUpdatedAt(new Date());
-							System.out.print("anali");
-							System.out.println(anali);
+//							System.out.print("anali");
+//							System.out.println(anali);
 							motionAnalysisService.salvar(anali);
 						}
 						

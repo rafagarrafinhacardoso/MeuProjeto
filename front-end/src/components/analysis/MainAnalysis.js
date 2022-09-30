@@ -83,7 +83,7 @@ export default function MainAnalysis() {
                     ...analysi,
                     graphB: cont
                 })
-                console.log(data, resp, cont);
+                // console.log(data, resp, cont);
                 // setEquipamentos(data)
             })
             .catch((error) => {
@@ -92,7 +92,7 @@ export default function MainAnalysis() {
     }
 
     const handleChange = (event) => {
-        console.log(event.target);
+        // console.log(event.target);
         setAnalysi({
             ...analysi,
             [event.target.name]: event.target.value
@@ -100,7 +100,7 @@ export default function MainAnalysis() {
     };
 
     const handleChangeType = (event) => {
-        console.log(event.target);
+        // console.log(event.target);
         setAnalysiType({
             ...analysiType,
             [event.target.name]: event.target.value
@@ -123,22 +123,22 @@ export default function MainAnalysis() {
         let id = "";
         if (grafico == "graphA") {
             id = dataAnalysis[analysi.graphA].id;
-        } else if(grafico == "graphB"){
+        } else if (grafico == "graphB") {
             id = dataAnalysis[analysi.graphB].id;
         } else {
             console.log("Erro");
         }
 
         fetch('/analysis/' + id)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            setEditAnalys(data);
-            setOpen(true);
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+            .then((res) => res.json())
+            .then((data) => {
+                // console.log(data);
+                setEditAnalys(data);
+                setOpen(true);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
 
     }
 
@@ -158,7 +158,7 @@ export default function MainAnalysis() {
         })
             .then(res => res.json())
             .then((result) => {
-                console.log("Salvo", result)
+                // console.log("Salvo", result)
                 setOpen(false);
                 buscarAnalises();
 
@@ -170,7 +170,7 @@ export default function MainAnalysis() {
     }
 
     function deletarAnalise() {
-        fetch("/analysis/"+editAnalys.id, {
+        fetch("/analysis/" + editAnalys.id, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -179,8 +179,8 @@ export default function MainAnalysis() {
             body: JSON.stringify(editAnalys),
         })
             .then((result) => {
-                console.log("Deletado", result)
-                if(result.ok){
+                // console.log("Deletado", result)
+                if (result.ok) {
                     setOpenDelete(false);
                     setAnalysi({
                         graphA: "0",
@@ -413,7 +413,7 @@ export default function MainAnalysis() {
                         </Box>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() => {setOpen(false); setOpenDelete(true)}}>Deletar</Button>
+                        <Button onClick={() => { setOpen(false); setOpenDelete(true) }}>Deletar</Button>
                         <Button onClick={handleClose}>Cancelar</Button>
                         <Button onClick={() => alterarAnalise()} autoFocus>
                             Salvar
@@ -436,7 +436,7 @@ export default function MainAnalysis() {
                     </DialogActions>
                 </Dialog>
             </ThemeProvider>
-        </LocalizationProvider>
+        </LocalizationProvider >
     );
 }
 

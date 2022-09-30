@@ -38,7 +38,7 @@ public class MotionAnalysisController {
 	
 	@DeleteMapping("/{id}")
 	public void deletar(@PathVariable("id") String id) {
-		System.out.println("Deletando" + id);
+//		System.out.println("Deletando" + id);
 		motionAnalysisService.deletarPorId(id);
 		return;
 	}
