@@ -82,6 +82,8 @@ public class MqttBeans {
 			@Override
 			public void handleMessage(Message<?> message) throws MessagingException {
 				String topic = message.getHeaders().get(MqttHeaders.RECEIVED_TOPIC).toString();
+//				System.out.println("topico: "+ topic);
+//				System.out.println("mensagem: "+ message.getPayload().toString());
 				List<Equipamento> equips = equipamentoService.findAllSerialNumber();
 				for (int i = 0; i < equips.size(); i++) {
 					if (topic.equals("device/" + equips.get(i).getSerialNumber() + "/status")) {

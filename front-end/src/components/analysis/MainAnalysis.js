@@ -5,10 +5,10 @@ import React, { useEffect, useState } from "react";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Header from "../Header";
 import CachedIcon from '@mui/icons-material/Cached';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 // import dayjs from 'dayjs';
-import { LocalizationProvider } from "@mui/x-date-pickers";
+// import { LocalizationProvider } from "@mui/x-date-pickers";
 // import Box from '@mui/material/Box';
 // import { Line } from 'react-chartjs-2';
 // import faker from 'faker';
@@ -198,7 +198,7 @@ export default function MainAnalysis() {
     }
 
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        // <LocalizationProvider dateAdapter={AdapterDayjs}>
             <ThemeProvider theme={theme}>
                 <Box sx={{ display: 'flex' }}>
                     <CssBaseline />
@@ -403,13 +403,13 @@ export default function MainAnalysis() {
                                 onChange={handleChangeDialog}
                                 name="userName"
                             />
-                            <DateTimePicker
+                            {/* <DateTimePicker
                                 label="Date "
                                 value={editAnalys.createdAt}
                                 onChange={() => console.log("<<<>>>")}
                                 disabled={true}
                                 renderInput={(params) => <TextField {...params} />}
-                            />
+                            /> */}
                         </Box>
                     </DialogContent>
                     <DialogActions>
@@ -436,7 +436,7 @@ export default function MainAnalysis() {
                     </DialogActions>
                 </Dialog>
             </ThemeProvider>
-        </LocalizationProvider >
+        // </LocalizationProvider >
     );
 }
 
