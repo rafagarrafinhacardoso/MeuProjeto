@@ -7,7 +7,7 @@ import BtnMqttExemple from './components/exemples/BtnMqttExemple';
 import MainAnalysis from './components/analysis/MainAnalysis';
 import { Container, createTheme, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
-import MessagaMqtt from './components/exemples/MessagaMqtt';
+import MessageMqtt from './components/exemples/MessageMqtt';
 import PageDefault from './components/PageDefault';
 
 const theme = createTheme();
@@ -27,7 +27,7 @@ function App() {
         </Route>
         <Route path="serviceMqtt" element={<PageDefault />}>
           <Route path="*" element={<Home />} />
-          <Route path="messange" element={<MessagaMqtt />} />
+          <Route path="messange" element={<MessageMqtt />} />
           <Route path="btnMqtt" element={<BtnMqttExemple />} />
         </Route>
       </Routes>
