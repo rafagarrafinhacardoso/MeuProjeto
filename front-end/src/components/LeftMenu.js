@@ -1,10 +1,6 @@
-import { AccountCircle, Assignment, BarChart, Dashboard, Layers, People, PhotoCamera, ShoppingCart } from "@mui/icons-material";
-import { AppBar, Badge, Box, Container, createTheme, CssBaseline, Divider, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Menu, MenuItem, Paper, ThemeProvider, Toolbar, Typography } from "@mui/material";
-import React, { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import {  List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Menu, MenuItem, Paper, ThemeProvider, Toolbar, Typography } from "@mui/material";
+import React, {  useState } from "react";
+import {  useNavigate } from "react-router-dom";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import HomeIcon from '@mui/icons-material/Home';
@@ -14,16 +10,16 @@ import MessageIcon from '@mui/icons-material/Message';
 const barraMenu = [
     { id: 1, text: "Pagina Inicial", link: "/", icon: "Home" },
     {
-        id: 2, text: "Serviços MQTT", subMenu: [
-            { id: "2.1", text: "Mensagem", link: "/messange", icon: "Message" },
-            { id: "2.2", text: "Butão", link: "/btnMqtt" }]
+        id: 2, text: "Equipamentos", link:"/devices", subMenu: [
+            { id: "2.1", text: "Registrar", link: "/regEquipamento" },
+            { id: "2.2", text: "Listar", link: "/listEquipamentos" }]
     },
-    { id: 3, text: "Monitor de Movimento Análise", link: "/mainAnalysis" },
     {
-        id: 4, text: "Equipamentos", subMenu: [
-            { id: "4.1", text: "Registrar", link: "/regEquipamento" },
-            { id: "4.2", text: "Listar", link: "/listEquipamentos" }]
-    }
+        id: 3, text: "Serviços MQTT", link: "/serviceMqtt", subMenu: [
+            { id: "3.1", text: "Mensagem", link: "/messange", icon: "Message" },
+            { id: "3.2", text: "Butão", link: "/btnMqtt" }]
+    },
+    { id: 4, text: "Monitor de Movimento Análise", link: "/mainAnalysis" },
 ];
 
 export default function LeftMenu(props) {
@@ -31,9 +27,9 @@ export default function LeftMenu(props) {
     let navigate = useNavigate();
     const [menu, setMenu] = useState(barraMenu);
 
-    function clickItemMenu(item) {
+    function clickItemMenu(l) {
         // console.log(item)
-        navigate(item.link, { replace: true });
+        navigate(l, { replace: true });
         setOpen(false);
     }
     function clickOpenMenu(i) {
@@ -68,7 +64,7 @@ export default function LeftMenu(props) {
                                     justifyContent: open ? 'initial' : 'center',
                                     px: 2.5,
                                 }}
-                                onClick={() => clickItemMenu(item)}
+                                onClick={() => clickItemMenu(item.link)}
                             >
                                 <ListItemIcon
                                     sx={{
@@ -114,7 +110,7 @@ export default function LeftMenu(props) {
                                             justifyContent: open ? 'initial' : 'center',
                                             px: 2.5,
                                         }}
-                                        onClick={() => clickItemMenu(itemSub)}
+                                        onClick={() => clickItemMenu(item.link ? item.link + itemSub.link : itemSub.link)}
                                     >
                                         <ListItemIcon
                                             sx={{

@@ -1,11 +1,12 @@
 import { Box, Container, createTheme, CssBaseline, Grid, Paper, ThemeProvider, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
 import Header from "./Header";
-// import CameraIcon from '@mui/icons-material/PhotoCamera';
 
 const theme = createTheme();
 
-export default function Home() {
+export default function PageDefault() {
+    const [titulo, setTitulo] = useState("Serviço MQTT Page")
 
     return (
         <ThemeProvider theme={theme}>
@@ -17,9 +18,12 @@ export default function Home() {
                         <Grid item xs={12}>
                             <Paper sx={{ p: 3, display: 'flex', flexDirection: 'column' }}>
                                 <Typography component="h1" variant="h4" align="center">
-                                    Home
+                                    {titulo}
                                 </Typography>
                             </Paper>
+                        </Grid>
+                        <Grid item sm={12}>
+                            <Outlet context={[setTitulo]} />
                         </Grid>
                     </Grid>
                 </Container>
