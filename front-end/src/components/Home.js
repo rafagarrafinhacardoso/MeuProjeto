@@ -11,8 +11,6 @@ export default function Home() {
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ display: 'flex' }}>
-                <CssBaseline />
-                <Header />
                 <Container maxWidth="lg" sx={{ mt: 10, mb: 4 }}>
                     <Grid container spacing={3} rowSpacing={1}  >
                         <Grid item xs={12}>

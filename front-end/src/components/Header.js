@@ -1,22 +1,13 @@
 import { AccountCircle, Assignment, BarChart, Dashboard, Layers, People, PhotoCamera, ShoppingCart } from "@mui/icons-material";
 import { AppBar, Badge, Box, Container, createTheme, CssBaseline, Divider, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Menu, MenuItem, Paper, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import React, { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import LeftMenu from "./LeftMenu";
 
-const barraMenu = [
-    {"text": "Pagina Inicial", "link": "/", "id": 1},
-    {"text": "Registrar Monitor de Movimento", "link": "/regEquipamento", "id": 2},
-    {"text": "Listar Monitores de Movimento", "link": "/listEquipamentos", "id": 3},
-    {"text": "Exemple MQTT", "link": "/btnMqtt", "id": 4},
-    {"text": "Análise", "link": "/mainAnalysis", "id": 5}
-];
+
 
 export default function Header() {
-    let navigate = useNavigate();
 
     const [open, setOpen] = useState(false);
 
@@ -35,11 +26,6 @@ export default function Header() {
         // console.log("test");
         // console.log(open);
     };
-
-    function clickItemMenu(item) {
-        // console.log(item)
-        navigate(item.link, { replace: true });
-    }
 
     return (
         <>
@@ -120,31 +106,7 @@ export default function Header() {
                 {/* <List component="nav">
                     {mainListItems}
                 </List> */}
-                <List>
-                    {barraMenu.map((item, index) => (
-                        <ListItem key={item.id} disablePadding sx={{ display: 'block' }}>
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                                onClick={() => clickItemMenu(item)}
-                            >
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <ArrowForwardIosIcon />
-                                </ListItemIcon>
-                                <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
+                <LeftMenu open={open} setOpen={setOpen} />
             </Drawer>
         </>
     );
