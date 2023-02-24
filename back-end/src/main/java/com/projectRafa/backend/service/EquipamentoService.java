@@ -9,6 +9,8 @@ public interface EquipamentoService {
 	
 	public List<Equipamento> obterTodos();
 	
+	public List<Equipamento> obterAtivos();
+	
 	public List<Equipamento> findAllSerialNumber();
 	
 	public Equipamento criar(Equipamento equip);

@@ -9,7 +9,6 @@ export default function MessageMqtt() {
     const [topico, setTopico] = useState("device/A86E6505613C/mensage");
 
     useEffect(() => {
-        console.log(">>>>use-Effect<<<<");
         setTitulo("Mensagem Mqtt -> Display OLED 128x64")
 
     }, []);
@@ -21,7 +20,7 @@ export default function MessageMqtt() {
             if (val.length <= 21) {
                 setText(val);
             } else {
-                console.log("ERRO");
+                // console.log("ERRO");
             }
 
         } else if (quebraLinha && quebraLinha.length < 8) { // conta quebra linha
@@ -29,16 +28,16 @@ export default function MessageMqtt() {
             let test = true;
             for (let x in array) {
                 if (array[x].length > 21) {
-                    console.log("ERRO");
+                    // console.log("ERRO");
                     test = false;
                 }
             }
             if (test)
                 setText(val);
-            else console.log("erro");
+            // else console.log("erro");
         }
         else {
-            console.log("ERRO");
+            // console.log("ERRO");
         }
     };
     const handleChangeTopico = (event) => {

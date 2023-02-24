@@ -98,7 +98,7 @@ public class MqttBeans {
 							newEquip.setUpdatedAt(new Date());
 							if (newEquip.getStatus() != null
 									&& newEquip.getSerialNumber().equals(equips.get(i).getSerialNumber())) {
-								System.out.println("<<<<<<< OK >>>>>>>");
+//								System.out.println("<<<<<<< OK >>>>>>>");
 								equipamentoService.criar(newEquip);
 							}
 						}
@@ -131,10 +131,10 @@ public class MqttBeans {
 						
 					}
 				}
-				if (topic.contains("device")) {
-					System.out.println("This is the topic: " + topic);
-					System.out.println(message.getPayload());
-				}
+//				if (topic.contains("device")) {
+//					System.out.println("This is the topic: " + topic);
+//					System.out.println(message.getPayload());
+//				}
 			}
 		};
 	}

@@ -26,6 +26,11 @@ public class EquipamentoController {
 	public List<Equipamento> buscarTodos() {
 		return this.equipamentoService.obterTodos();
 	}
+	
+	@GetMapping("ativo")
+	public List<Equipamento> buscarTodosAtivos() {
+		return this.equipamentoService.obterAtivos();
+	}
 
 	@PostMapping
 	public Equipamento novoEquipamento(@RequestBody Equipamento equip) {

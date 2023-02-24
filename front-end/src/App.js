@@ -16,8 +16,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="*" element={<About />} />
-        <Route path="/" element={<Home />} />
+        {/* <Route path="*" element={<About />} /> */}
+        <Route path="/" element={<PageDefault />} >
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<About />} />
+        </Route>
         <Route path="mainAnalysis" element={<PageDefault />}>
           <Route path="" element={<MainAnalysis />} />
         </Route>
@@ -40,19 +43,15 @@ export default App;
 
 function About() {
   return (
-    <Container maxWidth="lg">
-      <Grid container spacing={3} rowSpacing={1}  >
-        <Grid item xs={12}>
-          <Paper sx={{ p: 3, display: 'flex', flexDirection: 'column' }}>
-            <Typography component="h1" variant="h4" align="center">
-              Pagina não Encontrada
-            </Typography>
-          </Paper>
-        </Grid>
-        <Grid item xs={12}>
-          <Link to="/">Home</Link>
-        </Grid>
+    <Grid container spacing={3} rowSpacing={1}  >
+      <Grid item xs={12}>
+        <Typography component="h1" variant="h4" align="center">
+          Pagina não Encontrada
+        </Typography>
       </Grid>
-    </Container>
+      <Grid item xs={12}>
+        <Link to="/">Home</Link>
+      </Grid>
+    </Grid>
   );
 }
