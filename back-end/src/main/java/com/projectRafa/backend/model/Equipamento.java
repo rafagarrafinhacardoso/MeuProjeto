@@ -24,15 +24,7 @@ public class Equipamento {
 	
 	private Date createdAt;
 	
-	private EQUIPTYPE equipType;
-	
-	public enum EQUIPTYPE {
-		RAQUETE_TENIS(0),TACO_BASEBALL(1),RAQUETE_BEACH_TENNIS(2),LUVA_BOXE(3),SAPATO(4);
-		public int type;
-		EQUIPTYPE(int ty) {
-			this.type = ty;
-		}
-	}
+	private String equipType;
 
 	public String getId() {
 		return id;
@@ -58,11 +50,11 @@ public class Equipamento {
 		this.serialNumber = serialNumber;
 	}
 
-	public EQUIPTYPE getEquipType() {
+	public String getEquipType() {
 		return equipType;
 	}
 
-	public void setEquipType(EQUIPTYPE equipType) {
+	public void setEquipType(String equipType) {
 		this.equipType = equipType;
 	}
 

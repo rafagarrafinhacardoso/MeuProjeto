@@ -9,6 +9,7 @@ import { Container, createTheme, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
 import MessageMqtt from './components/exemples/MessageMqtt';
 import PageDefault from './components/PageDefault';
+import ToolsMqttPainel from './components/exemples/ToolsMqttPainel';
 
 const theme = createTheme();
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="*" element={<Home />} />
           <Route path="messange" element={<MessageMqtt />} />
           <Route path="btnMqtt" element={<BtnMqttExemple />} />
+          <Route path="toolsMqtt" element={<ToolsMqttPainel />} />
         </Route>
       </Routes>
     </div>

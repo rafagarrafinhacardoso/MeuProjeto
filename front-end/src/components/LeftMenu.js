@@ -1,6 +1,6 @@
-import {  List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Menu, MenuItem, Paper, ThemeProvider, Toolbar, Typography } from "@mui/material";
-import React, {  useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Menu, MenuItem, Paper, ThemeProvider, Toolbar, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import HomeIcon from '@mui/icons-material/Home';
@@ -10,14 +10,17 @@ import MessageIcon from '@mui/icons-material/Message';
 const barraMenu = [
     { id: 1, text: "Pagina Inicial", link: "/", icon: "Home" },
     {
-        id: 2, text: "Equipamentos", link:"/devices", subMenu: [
+        id: 2, text: "Equipamentos", link: "/devices", subMenu: [
             { id: "2.1", text: "Registrar", link: "/regEquipamento" },
-            { id: "2.2", text: "Listar", link: "/listEquipamentos" }]
+            { id: "2.2", text: "Listar", link: "/listEquipamentos" }
+        ]
     },
     {
         id: 3, text: "Serviços MQTT", link: "/serviceMqtt", subMenu: [
             { id: "3.1", text: "Mensagem", link: "/messange", icon: "Message" },
-            { id: "3.2", text: "Butão", link: "/btnMqtt" }]
+            { id: "3.2", text: "Butão", link: "/btnMqtt" },
+            { id: "3.3", text: "Default", link: "/toolsMqtt" }
+        ]
     },
     { id: 4, text: "Monitor de Movimento Análise", link: "/mainAnalysis" },
 ];

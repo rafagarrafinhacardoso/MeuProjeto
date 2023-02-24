@@ -51,9 +51,10 @@ export default function ListarMotionMonitor() {
     }
 
     return (
-        <Grid container spacing={3} rowSpacing={1}  >
-            <Grid item xs={12}>
-                <Paper sx={{ p: 3, display: 'flex', flexDirection: 'column' }}>
+        <Paper sx={{ p: 3, display: 'flex', flexDirection: 'column' }}>
+            <Grid container spacing={3} rowSpacing={1}  >
+                <Grid item xs={12}>
+
                     <Box
                         component="form"
                         sx={{
@@ -106,8 +107,9 @@ export default function ListarMotionMonitor() {
                             </Button>
                         </div>
                     </Box>
-                </Paper>
+
+                </Grid>
             </Grid>
-        </Grid>
+        </Paper >
     );
 }

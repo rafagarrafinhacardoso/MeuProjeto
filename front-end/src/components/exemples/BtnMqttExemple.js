@@ -5,7 +5,6 @@ import { useOutletContext } from "react-router-dom";
 export default function BtnMqttExemple() {
     const [setTitulo] = useOutletContext();
     useEffect(() => {
-        console.log(">>>>use-Effect<<<<");
         setTitulo("Botão MQTT Exemplo")
 
     }, [])

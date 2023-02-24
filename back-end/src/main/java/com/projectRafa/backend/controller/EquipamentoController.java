@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projectRafa.backend.model.Equipamento;
-import com.projectRafa.backend.model.Equipamento.EQUIPTYPE;
 import com.projectRafa.backend.service.EquipamentoService;
 
 @RestController
@@ -39,17 +38,6 @@ public class EquipamentoController {
 		equip.setCreatedAt(new Date());
 		equip.setUpdatedAt(new Date());
 		return this.equipamentoService.criar(equip);
-	}
-
-	@GetMapping("tipo")
-	public static List<Object> tiposEquipamentos() {
-		List<Object> tipos = new ArrayList<Object>();
-		tipos.add(EQUIPTYPE.RAQUETE_TENIS.type,EQUIPTYPE.RAQUETE_TENIS);
-		tipos.add(EQUIPTYPE.TACO_BASEBALL.type,EQUIPTYPE.TACO_BASEBALL);
-		tipos.add(EQUIPTYPE.RAQUETE_BEACH_TENNIS.type,EQUIPTYPE.RAQUETE_BEACH_TENNIS);
-		tipos.add(EQUIPTYPE.LUVA_BOXE.type,EQUIPTYPE.LUVA_BOXE);
-		tipos.add(EQUIPTYPE.SAPATO.type,EQUIPTYPE.SAPATO);
-		return tipos;
 	}
 
 }

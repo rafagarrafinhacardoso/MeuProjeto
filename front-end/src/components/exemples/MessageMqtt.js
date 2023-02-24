@@ -1,4 +1,4 @@
-import { Button, Grid, TextField } from "@mui/material";
+import { Button, Grid, Paper, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import SendIcon from '@mui/icons-material/Send';
@@ -68,39 +68,36 @@ export default function MessageMqtt() {
     }
 
     return (
-        <Grid container spacing={3} rowSpacing={1} >
-            <Grid item sm={12}>
-                <Grid container spacing={2}>
-                    {/* <Grid item xs={12}></Grid> */}
-                    <Grid item xs={5}>
-                        <TextField
-                            fullWidth
-                            id="outlined-basic"
-                            label="Mensagem"
-                            multiline
-                            // rows={4}
-                            maxRows={8}
-                            value={text || ''}
-                            onChange={handleChange}
-                        />
-                    </Grid>
-                    <Grid item xs={5}>
-                        <TextField
-                            fullWidth
-                            id="topiv"
-                            label="Topico"
-                            value={topico || ''}
-                            onChange={handleChangeTopico}
-                        />
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Button variant="contained" endIcon={<SendIcon />} onClick={enviaMessage} >
-                            Enviar
-                        </Button>
-                    </Grid>
+        <Paper sx={{ p: 3, display: 'flex', flexDirection: 'column' }}>
+            <Grid container spacing={3} rowSpacing={1} >
+                <Grid item xs={5}>
+                    <TextField
+                        fullWidth
+                        id="outlined-basic"
+                        label="Mensagem"
+                        multiline
+                        // rows={4}
+                        maxRows={8}
+                        value={text || ''}
+                        onChange={handleChange}
+                    />
+                </Grid>
+                <Grid item xs={5}>
+                    <TextField
+                        fullWidth
+                        id="topiv"
+                        label="Topico"
+                        value={topico || ''}
+                        onChange={handleChangeTopico}
+                    />
+                </Grid>
+                <Grid item xs={2}>
+                    <Button variant="contained" endIcon={<SendIcon />} onClick={enviaMessage} >
+                        Enviar
+                    </Button>
                 </Grid>
             </Grid>
-        </Grid>
+        </Paper>
 
     );
 }
