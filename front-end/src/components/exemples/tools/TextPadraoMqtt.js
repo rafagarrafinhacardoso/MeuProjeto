@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import SendIcon from '@mui/icons-material/Send';
 
 export default function TextPadraoMqtt(props) {
-    const { data } = props
+    const { data, action } = props
     const [text, setText] = useState();
     const [topico, setTopico] = useState("device/A86E6505613C/mensage");
 
@@ -32,7 +32,7 @@ export default function TextPadraoMqtt(props) {
                     setText(val);
                 // else console.log("erro");
             }
-        }else{
+        } else {
             setText(val);
         }
     };
@@ -64,7 +64,7 @@ export default function TextPadraoMqtt(props) {
     }
 
     return (
-        <Grid container item xs={6} spacing={2} rowSpacing={2}>
+        <Grid container item xs={(data && data.sizeGrid) ? data.sizeGrid : 12} spacing={2} rowSpacing={2}>
             <Grid item xs={12}>
                 <FormControl fullWidth variant="outlined">
                     <InputLabel htmlFor="outlined-adornment-password">{(data && data.nomeCampo) ? data.nomeCampo : "Mensagem"}</InputLabel>
@@ -79,8 +79,8 @@ export default function TextPadraoMqtt(props) {
                             <InputAdornment position="end">
                                 <IconButton
                                     aria-label="toggle password visibility"
-                                    onClick={() => console.log("click")}
-                                    onMouseDown={() => console.log("mouse donw")}
+                                    onClick={() => action(data.topico, text)}
+                                    // onMouseDown={() => console.log("mouse donw")}
                                     edge="end"
                                 >
                                     <SendIcon />
